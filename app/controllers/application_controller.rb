@@ -1,0 +1,9 @@
+require 'fetch_logins'
+
+class ApplicationController < ActionController::Base
+  helper :all
+  protect_from_forgery with: :exception
+  def index
+    FetchLoginsWorker.perform_async()
+  end
+end
